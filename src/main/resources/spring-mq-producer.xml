@@ -14,7 +14,7 @@
 	default-autowire="byName" default-lazy-init="false">
 	
 	<!-- 配置要扫描的包 -->
-	<context:component-scan base-package="com.westar.common.mqlistener.*" />
+	<context:component-scan base-package="com.westar.common.mqlistener" />
 	
 	<!-- 基于Dubbo的分布式系统架构视频教程，吴水成，wu-sc@foxmail.com，学习交流QQ群：367211134 -->
 
