@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.westar.common.controller.BaseController;
+import com.westar.common.model.RpNotifyRecord;
 import com.westar.common.model.UserInfo;
+import com.westar.common.mqlistener.MQProducer;
 import com.westar.login.services.LoginService;
 
 @Controller
@@ -16,11 +18,16 @@ public class LoginController extends BaseController{
 	@Resource
 	private LoginService loginService;
 	
+	@Resource(name="mqProducer")
+	private MQProducer mqProducer;
+	
 	@RequestMapping("/loginAccount")
 	public ModelAndView login(String username,String passwordhash,String yzm) {
 		ModelAndView mav = new ModelAndView("/toIndex");
 		System.out.println(username);
 		UserInfo userInfo = loginService.queryUserInfo(null);
+		
+		mqProducer.sendMessage(new RpNotifyRecord());
 				
 		
 		String sid = this.addSessionUser(userInfo);

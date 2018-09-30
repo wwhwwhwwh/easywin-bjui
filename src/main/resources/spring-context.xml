@@ -29,5 +29,8 @@
    <import resource="spring-service.xml"/>
    
    <import resource="spring-redis.xml"/>
+   
+   <import resource="spring-mq-producer.xml"/>
+   <import resource="spring-mq-consumer.xml"/>
 </beans>
   
